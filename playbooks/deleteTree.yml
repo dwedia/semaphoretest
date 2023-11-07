@@ -1,0 +1,10 @@
+---
+- name: install tree
+  hosts: all
+  become: true
+
+  tasks:
+    - name: install tree
+      dnf:
+        name: tree
+        state: absent

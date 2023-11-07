@@ -1,0 +1,29 @@
+---
+- name: Update OS on targets
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Check which packages needs an update
+    ansible.builtin.dnf:
+      list: updates
+    register: packages
+
+  - name: Show which packages to upgrade
+    ansible.builtin.debug:
+      msg: >-
+        {%- set output=[] -%}
+        {%- for p in packages.results -%}
+        {{ output.append('%-40s' % (p.name ~ '-' ~ p.version) ~ ' | repo: ' ~ p.repo) }}
+        {%- endfor -%}
+        {{ output }}
+
+  - name: Upgrade packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+
+  - name: Autoremove unneeded packages, left behind as dependences
+    ansible.builtin.dnf:
+      autoremove: yes
+

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  
+  tasks:
+  - name: uptime
+    shell: uptime | awk '{print $1, $2, $3, $4}'
+    register: uptime_out
+
+  - name: output from uptime command
+    debug: msg="{{ uptime_out.stdout_lines }}"
+    when: uptime_out is defined

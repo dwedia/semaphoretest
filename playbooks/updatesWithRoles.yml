@@ -10,7 +10,7 @@
     - role: dnfUpdate
       when: ansible_facts['os_family'] == "RedHat"
     - role: snapUpdate
-    - role: flatpakUpdate
+#    - role: flatpakUpdate
     - role: clamavUpdate
     - role: debianRebootCheck
       when: ansible_facts['os_family'] == "Debian"

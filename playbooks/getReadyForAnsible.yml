@@ -42,11 +42,12 @@
         owner: "{{ user_name }}"
         group: "{{ user_name }}"
 
-    - name: copy authorized_keys file
-      copy:
-        src: authorized_keys
-        dest: /home/{{ user_name }}/.ssh/authorized_keys
-        owner: "{{ user_name }}"
-        group: "{{ user_name }}"
-        mode: '0600'
-        backup: yes
+
+#    - name: copy authorized_keys file
+#      copy:
+#        src: authorized_keys
+#        dest: /home/{{ user_name }}/.ssh/authorized_keys
+#        owner: "{{ user_name }}"
+#        group: "{{ user_name }}"
+#        mode: '0600'
+#        backup: yes

@@ -2,7 +2,6 @@
 - hosts: all
   become: yes
   become_user: root
-  remote_user: ramiraz
   vars_prompt:
     - name: user_name
       prompt: "Enter the user name:"
@@ -12,6 +11,7 @@
       private: yes
       encrypt: sha512_crypt
       confirm: yes
+      salt_size:
 
   tasks:
     - name: Create user

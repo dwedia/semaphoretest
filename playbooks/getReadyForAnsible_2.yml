@@ -11,7 +11,7 @@
       private: yes
       encrypt: sha512_crypt
       confirm: yes
-      salt_size:
+      salt_size: 7
 
   tasks:
     - name: Create user
